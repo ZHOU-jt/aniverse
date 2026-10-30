@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% from 'ui.html' import icon %}
+{% block title %}发起讨论 · AniVerse{% endblock %}
+{% block location %}自由论坛 / 发起讨论{% endblock %}
+{% block content %}
+<div class="reading-width"><a class="back-link" href="{{ url_for('forum') }}">{{ icon('back') }} 返回自由论坛</a><header class="page-heading"><div><span class="eyebrow">START A CONVERSATION</span><h1>把想说的话，写下来。</h1><p>一个脑洞，一份安利，一段难忘的观看体验。</p></div></header>
+<form method="post" class="form-card"><div class="field"><label for="postTitle">给讨论起个标题</label><input id="postTitle" name="title" minlength="2" maxlength="120" value="{{ title or '' }}" placeholder="想和大家讨论什么？" required><span class="field-note">2–120 个字符，让大家一眼看到你的话题。</span></div><div class="field"><label for="postContent">展开聊聊</label><textarea id="postContent" name="content" rows="12" maxlength="5000" placeholder="写下你的想法……" required data-counter="postCounter">{{ content or '' }}</textarea></div><div class="form-actions"><span class="field-note" id="postCounter" aria-live="off">最多 5000 个字符</span><button class="button button-primary" type="submit">发布讨论 {{ icon('arrow') }}</button></div></form>
+<p class="form-bottom-note">友善交流，尊重每一种热爱。涉及剧情时，记得在标题中标注剧透。</p></div>
+{% endblock %}

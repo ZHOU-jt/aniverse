@@ -1,0 +1,14 @@
+# Edit User, WorkingDirectory and ExecStart for your own machine.
+[Unit]
+Description=AniVerse coursework web application
+After=network.target
+
+[Service]
+User=www-data
+WorkingDirectory=/opt/aniverse/src
+ExecStart=/opt/aniverse/src/.venv/bin/python /opt/aniverse/src/run.py --host 127.0.0.1 --port 8080
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

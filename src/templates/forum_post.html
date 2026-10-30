@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% from 'ui.html' import icon,empty %}
+{% block title %}{{ post.title }} · 自由论坛 · AniVerse{% endblock %}
+{% block location %}自由论坛 / 话题详情{% endblock %}
+{% block content %}
+<div class="reading-width"><a class="back-link" href="{{ url_for('forum') }}">{{ icon('back') }} 返回自由论坛</a>
+<article class="post-detail"><span class="eyebrow">COMMUNITY CONVERSATION</span><h1>{{ post.title }}</h1><div class="post-author"><span class="user-avatar light-avatar">{{ post.username[0]|upper }}</span><div><strong>{{ post.username }}</strong><p><time datetime="{{ post.created_at|utc_iso }}" title="北京时间（UTC+8）">{{ post.created_at|beijing_time }}</time><span class="timezone-note">北京时间</span> <span>· {{ post.views + 1 }} 次浏览</span></p></div></div><div class="forum-content">{{ post.content }}</div></article>
+<section class="replies-section"><div class="section-heading"><h2>一起聊聊 <span class="count-label">{{ replies|length }}</span></h2><a class="text-link" href="#reply-form">我也来说说 {{ icon('arrow') }}</a></div>
+{% for reply in replies %}<article class="review-card reply-card"><div class="review-header"><div class="user-avatar light-avatar">{{ reply.username[0]|upper }}</div><div class="review-author"><strong>{{ reply.username }}</strong><time datetime="{{ reply.created_at|utc_iso }}" title="北京时间（UTC+8）">{{ reply.created_at|beijing_time }}</time></div><span class="reply-floor">#{{ loop.index }}</span></div><div class="forum-content">{{ reply.content }}</div></article>{% else %}{{ empty('还没有回复，来坐第一层楼','你的观点，也许正是这场讨论需要的另一种视角。') }}{% endfor %}</section>
+<form id="reply-form" method="post" class="form-card"><div class="field"><label for="replyContent">发表回复</label><textarea id="replyContent" name="content" rows="5" maxlength="3000" placeholder="友善交流，分享你的观点……" required data-counter="replyCounter"></textarea></div><div class="form-actions"><span class="field-note" id="replyCounter" aria-live="off">最多 3000 个字符</span><button type="submit" class="button button-primary">发布回复 {{ icon('arrow') }}</button></div></form></div>
+{% endblock %}

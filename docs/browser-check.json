@@ -1,0 +1,12 @@
+{
+  "checked_at": "2026-10-22T11:40:45.072Z",
+  "login": true,
+  "chinese_search": true,
+  "forum_timezone": "UTC+8",
+  "mobile_320": {
+    "document": 305,
+    "overflow": false,
+    "viewport": 320
+  },
+  "console_errors": []
+}

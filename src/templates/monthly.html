@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% from 'ui.html' import icon,anime_card,empty,filters %}
+{% block title %}{{ year }}年{{ month }}月新番日历 · AniVerse{% endblock %}
+{% block location %}新番日历{% endblock %}
+{% block content %}
+<header class="page-heading"><div><span class="eyebrow">MAKE ROOM FOR YOUR NEXT FAVORITE</span><h1>每个月，都有新期待。</h1><p>按首播月份浏览动画，把喜欢的故事排进日程。</p></div><span class="outline-stamp">ANIME<br>CALENDAR {{ icon('calendar') }}</span></header>
+<section class="month-panel" aria-label="选择月份"><a class="button button-secondary" href="{{ url_for('monthly_anime',year=prev_year,month=prev_month,status=status_filter) }}" aria-label="查看 {{ prev_year }} 年 {{ prev_month }} 月">{{ icon('back') }}<span>上个月</span></a><div><span class="eyebrow">{{ year }} ANIME CALENDAR</span><h2><b>{{ '%02d'|format(month) }}</b> <span>月新番<small>{{ anime_list|length }} 部作品 · 按首播日期排列</small></span></h2></div><a class="button button-secondary" href="{{ url_for('monthly_anime',year=next_year,month=next_month,status=status_filter) }}" aria-label="查看 {{ next_year }} 年 {{ next_month }} 月"><span>下个月</span>{{ icon('arrow') }}</a></section>
+{{ filters('monthly_anime',status_filter,status_counts,year,month) }}
+<div class="anime-grid">{% for anime in anime_list %}{{ anime_card(anime,loop.index0,true) }}{% else %}{{ empty('这个月，暂时还没有收录作品','切换月份或播出状态，继续寻找你的下一份期待。') }}{% endfor %}</div>
+{% endblock %}

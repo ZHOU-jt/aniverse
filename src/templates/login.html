@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-5">
+
+        <div class="card shadow p-4">
+
+            <h2 class="mb-4">
+                登录
+            </h2>
+
+            <form method="POST">
+
+                <input
+                    class="form-control mb-3"
+                    name="username"
+                    placeholder="用户名"
+                    required>
+
+                <input
+                    class="form-control mb-3"
+                    name="password"
+                    type="password"
+                    placeholder="密码"
+                    required>
+
+                <button
+                    class="btn btn-primary w-100"
+                >
+                    登录
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

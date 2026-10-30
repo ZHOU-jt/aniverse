@@ -1,0 +1,7 @@
+.watch-entry{display:flex;align-items:center;flex-wrap:wrap;gap:12px 16px;margin:20px 0 24px}
+.watch-entry>.button-bilibili{background:#fff0f5;border-color:#f2d2df;color:#ad426a;gap:10px;font-size:13px;padding:10px 15px;min-height:44px}
+.watch-entry>.button-bilibili:hover{background:#ffe4ee;border-color:#e7a9c1;color:#963355}
+.bilibili-mark{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:24px;padding:0 5px;border-radius:5px;background:#e2789c;color:#fff;font-size:11px;font-weight:700;letter-spacing:.3px}
+.button-bilibili>.icon{width:16px;height:16px;transform:rotate(-35deg)}
+.watch-entry>p{font-size:11px;line-height:1.8;color:#8c7e97;margin:0}
+@media(max-width:600px){.watch-entry{gap:9px;margin:18px 0 21px}.watch-entry>.button-bilibili{width:100%;justify-content:flex-start;font-size:12px;padding:11px 13px}.button-bilibili>.icon{margin-left:auto}.watch-entry>p{font-size:10px}}

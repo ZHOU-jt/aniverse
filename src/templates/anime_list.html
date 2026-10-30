@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% from 'ui.html' import icon,anime_card,empty,filters,pagination %}
+{% block title %}{{ season_year }} {{ season_label }}番剧 · AniVerse{% endblock %}
+{% block location %}本季番剧{% endblock %}
+{% block content %}
+<header class="page-heading"><div><span class="eyebrow">THIS SEASON, YOUR STORIES</span><h1>{{ season_year }} {{ season_label }}番剧<span class="heading-spark">✦</span></h1><p>新一季的心动，从这里开始。当前筛选共 <strong>{{ total }}</strong> 部作品。</p></div><a class="button button-secondary" href="{{ url_for('monthly_anime') }}">{{ icon('calendar') }} 按月份探索</a></header>
+{{ filters('anime_list',status_filter,status_counts) }}
+<div class="anime-grid">{% for anime in anime_list %}{{ anime_card(anime,loop.index0) }}{% else %}{{ empty('这个筛选下还没有作品','试试其他播出状态，或者前往日历探索更多动画。') }}{% endfor %}</div>
+{{ pagination('anime_list',page,total_pages,status_filter) }}
+{% endblock %}

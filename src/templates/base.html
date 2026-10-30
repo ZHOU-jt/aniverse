@@ -1,0 +1,43 @@
+{% from 'ui.html' import icon, brand %}
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#171824"><meta name="description" content="AniVerse 动漫评分社区。发现本季新番，探索新番日历，分享属于你的观看体验。">
+<title>{% block title %}AniVerse · 让好故事相遇{% endblock %}</title>
+<link rel="icon" href="{{ url_for('static',filename='images/favicon.svg') }}" type="image/svg+xml">
+<link rel="preconnect" href="https://s4.anilist.co" crossorigin><link rel="preconnect" href="https://cdn.myanimelist.net" crossorigin>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/aniverse.css',v='20261015.1') }}">
+<script src="{{ url_for('static',filename='js/aniverse.js',v='20261015.1') }}" defer></script>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/feedback.css',v='20261020.1') }}">
+{% block head %}{% endblock %}
+</head>
+<body>
+<a class="skip-link" href="#main-content">跳到主要内容</a>
+<aside class="sidebar" id="site-nav" aria-label="主导航">
+<a class="brand" href="{{ url_for('home') }}" aria-label="AniVerse 首页">{{ brand() }}</a>
+<span class="nav-label">你的动画宇宙</span>
+<nav class="nav-links">{% for endpoint,label,symbol in [('home','发现','discover'),('library','全部番剧','grid'),('anime_list','本季番剧','grid'),('monthly_anime','新番日历','calendar'),('search','探索番剧','search'),('forum','自由论坛','chat')] %}
+<a href="{{ url_for(endpoint) }}" class="nav-link {% if request.endpoint == endpoint or (endpoint == 'forum' and request.endpoint in ['forum_new','forum_post']) %}active{% endif %}" {% if request.endpoint == endpoint %}aria-current="page"{% endif %}>{{ icon(symbol) }}<span>{{ label }}</span>{% if endpoint == 'home' %}<span class="nav-dot"></span>{% endif %}</a>
+{% endfor %}</nav>
+<a class="sidebar-note" href="{{ url_for('forum_new') }}"><span class="mini-spark">✦</span><strong>喜欢的故事，值得分享。</strong><span>写下你的想法，找到同好。</span><span class="note-action">发起讨论 {{ icon('arrow') }}</span></a>
+<div class="sidebar-bottom"><div class="user-avatar">{{ (session.get('username') or 'A')[0]|upper }}</div><div class="user-info"><strong>{{ session.get('username','动画爱好者') }}</strong><span>今天也要快乐追番</span></div><a href="{{ url_for('logout') }}" class="logout" aria-label="退出登录" title="退出登录">{{ icon('logout') }}</a></div>
+</aside>
+<button class="nav-scrim" data-menu-close aria-label="收起导航" hidden></button>
+<div class="workspace">
+<header class="topbar">
+<div class="topbar-location"><button class="icon-button menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="展开导航" data-menu-toggle>{{ icon('menu') }}</button><span class="topbar-brand">ANIVERSE</span><span class="topbar-divider">/</span><span>{% block location %}发现你的下一部心动之作{% endblock %}</span></div>
+<form class="top-search" action="{{ url_for('search') }}" method="get" role="search">{{ icon('search') }}<input aria-label="搜索番剧名称或类型" name="q" placeholder="搜索番剧、类型…" value="{{ request.args.get('q','') }}"><button type="submit" aria-label="提交搜索">↵</button></form>
+<a class="top-avatar" href="{{ url_for('forum') }}" aria-label="前往社区">{{ (session.get('username') or 'A')[0]|upper }}</a>
+</header>
+<main id="main-content" class="page-content">
+{% with messages = get_flashed_messages(with_categories=true) %}{% for category,message in messages %}
+<div class="alert alert-{{ category }}" role="alert"><span>{{ message }}</span><button type="button" data-dismiss aria-label="关闭提示">×</button></div>
+{% endfor %}{% endwith %}
+{% block content %}{% endblock %}
+</main>
+<footer class="site-footer"><a href="{{ url_for('home') }}">AniVerse <span>让好故事相遇。</span></a><span>发现 · 评价 · 分享 <span class="footer-star">✦</span></span></footer><div class="data-credit"><span>番剧资料：<a href="https://anilist.co" target="_blank" rel="noopener noreferrer">AniList</a></span><span>· 中文译名：<a href="https://github.com/bangumi-data/bangumi-data" target="_blank" rel="noopener noreferrer">bangumi-data</a>（<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>）</span></div>
+</div>
+<nav class="mobile-nav" aria-label="快捷导航">{% for endpoint,label,symbol in [('home','发现','discover'),('library','片库','grid'),('monthly_anime','日历','calendar'),('forum','社区','chat')] %}<a href="{{ url_for(endpoint) }}" {% if request.endpoint == endpoint or (endpoint == 'forum' and request.endpoint in ['forum_new','forum_post']) %}class="active" aria-current="page"{% endif %}>{{ icon(symbol) }}<span>{{ label }}</span></a>{% endfor %}</nav>
+{% block scripts %}{% endblock %}
+</body></html>

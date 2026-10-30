@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% from 'ui.html' import icon,empty,pagination %}
+{% block title %}自由论坛 · AniVerse{% endblock %}
+{% block location %}自由论坛{% endblock %}
+{% block content %}
+<header class="page-heading"><div><span class="eyebrow">GOOD STORIES, GREAT CONVERSATIONS</span><h1>热爱，在这里有回音。<span class="heading-spark">✦</span></h1><p>动画、角色、制作，和所有想聊的事。共 {{ total }} 个话题。</p></div><a class="button button-primary" href="{{ url_for('forum_new') }}">{{ icon('edit') }} 发起讨论</a></header>
+<div class="forum-layout"><section><div class="forum-list-label"><span>{{ icon('chat') }} 最新讨论</span><span>时间均为北京时间</span></div><div class="forum-list">
+{% for post in posts %}<a class="forum-card" href="{{ url_for('forum_post',post_id=post.id) }}" aria-label="{{ post.title }}"><div class="user-avatar light-avatar">{{ post.username[0]|upper }}</div><article><div class="post-meta"><span>{{ post.username }}</span><time datetime="{{ post.created_at|utc_iso }}" title="北京时间（UTC+8）">{{ post.created_at|beijing_time }}</time></div><h2>{{ post.title }}</h2><p>{{ post.content|striptags|truncate(150,true,'…') }}</p><div class="post-stats"><span>{{ icon('chat') }} {{ post.reply_count }} 条回复</span><span>{{ icon('eye') }} {{ post.views }} 次浏览</span></div></article>{{ icon('arrow') }}</a>{% else %}{{ empty('第一场讨论，从你开始','分享一部好番，或聊聊你念念不忘的角色。') }}{% endfor %}</div>{{ pagination('forum',page,total_pages) }}</section>
+<aside class="forum-aside"><span class="mini-spark">✦</span><span class="eyebrow">OUR LITTLE CORNER</span><h2>因为喜欢，<br>所以有话想说。</h2><p>这里装得下热烈的安利、细腻的感受，也装得下不同的观点。</p><div class="community-values"><span>01 <strong>认真表达，友善交流</strong></span><span>02 <strong>涉及剧透，记得提醒</strong></span><span>03 <strong>尊重每一种热爱</strong></span></div><a href="{{ url_for('forum_new') }}" class="text-link">分享你的此刻 {{ icon('arrow') }}</a></aside></div>
+{% endblock %}

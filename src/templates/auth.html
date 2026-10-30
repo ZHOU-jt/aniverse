@@ -1,0 +1,45 @@
+{% from 'ui.html' import icon,brand %}
+<!doctype html><html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#171824">
+<meta name="description" content="AniVerse 动漫评分社区，与热爱同频。发现动画、分享评价，遇见属于你的动画宇宙。">
+<title>{{ '加入' if mode == 'register' else '欢迎回来' }} · AniVerse</title>
+<link rel="icon" href="{{ url_for('static',filename='images/favicon.svg') }}" type="image/svg+xml">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/aniverse.css',v='20261015.1') }}">
+<script src="{{ url_for('static',filename='js/auth.js',v='20261015.1') }}" defer></script>
+</head><body class="auth-page">
+<a class="skip-link" href="#auth-content">跳到登录或注册</a>
+<div class="auth-shell">
+<section class="auth-visual" aria-label="欢迎来到 AniVerse"><img class="auth-art" src="{{ url_for('static',filename='images/auth-hero.jpg') }}" alt="AniVerse 动画人物插画" fetchpriority="high"><div class="auth-art-shade"></div>
+<a class="brand auth-brand" href="{{ url_for('auth') }}">{{ brand() }}</a>
+<span class="auth-vertical" aria-hidden="true">A SPACE FOR EVERY ANIME LOVER</span>
+<div class="auth-visual-copy"><span class="eyebrow">FIND YOUR PEOPLE. FIND YOUR STORIES.</span><h2>每一种热爱，<br>都有自己的<span>宇宙。</span></h2><p>发现让你心动的动画，<br>把那些想说的话，留给懂的人。</p><div class="auth-feature-list"><span>{{ icon('discover') }} 发现好番</span><span>{{ icon('star') }} 认真评价</span><span>{{ icon('chat') }} 自由讨论</span></div></div>
+<div class="auth-visual-footer"><span>ANIVERSE · 与你的热爱同频</span><span>✦</span></div>
+</section>
+<main class="auth-panel" id="auth-content"><div class="auth-panel-top"><span>YOUR ANIME UNIVERSE</span><span class="small-spark">✦</span></div><div class="auth-card">
+<div class="auth-mobile-brand">{{ brand() }}</div>
+<span class="eyebrow auth-eyebrow">HELLO, ANIME LOVER</span>
+<h1 class="auth-title" id="auth-title">{{ '新的相遇，从这里开始。' if mode == 'register' else '欢迎回到，你的热爱。' }}</h1>
+<p class="auth-subtitle">登录 AniVerse，继续探索你的动画宇宙。</p>
+{% with messages=get_flashed_messages(with_categories=true) %}{% for category,message in messages %}<div class="alert alert-{{ category }}" role="alert">{{ message }}</div>{% endfor %}{% endwith %}
+<div class="auth-tabs" role="tablist" aria-label="选择登录或注册">
+<a href="{{ url_for('auth',mode='login') }}" role="tab" id="loginTab" aria-controls="loginPanel" aria-selected="{{ 'true' if mode != 'register' else 'false' }}" class="auth-tab {% if mode != 'register' %}active{% endif %}" data-target="loginPanel">登录</a>
+<a href="{{ url_for('auth',mode='register') }}" role="tab" id="registerTab" aria-controls="registerPanel" aria-selected="{{ 'true' if mode == 'register' else 'false' }}" class="auth-tab {% if mode == 'register' %}active{% endif %}" data-target="registerPanel">注册</a></div>
+<section id="loginPanel" role="tabpanel" aria-labelledby="loginTab" class="form-panel {% if mode != 'register' %}active{% endif %}">
+<form method="post" action="{{ url_for('login') }}">
+<div class="field"><label for="loginIdentity">邮箱 / 用户名</label><input id="loginIdentity" name="identity" autocomplete="username" placeholder="输入你的邮箱或用户名" required></div>
+<div class="field"><label for="loginPassword">密码</label><div class="password-field"><input id="loginPassword" name="password" type="password" autocomplete="current-password" placeholder="输入你的密码" required><button type="button" data-password-toggle aria-label="显示密码" aria-pressed="false">{{ icon('eye') }}</button></div></div>
+<button class="button button-primary auth-submit" type="submit">进入我的动画宇宙 {{ icon('arrow') }}</button>
+<p class="auth-form-note">熟悉的账号，新的心动。</p>
+</form></section>
+<section id="registerPanel" role="tabpanel" aria-labelledby="registerTab" class="form-panel {% if mode == 'register' %}active{% endif %}">
+<form method="post" action="{{ url_for('register') }}" id="registerForm">
+<div class="field"><label for="registerUsername">用户名</label><input id="registerUsername" name="username" minlength="3" maxlength="24" autocomplete="username" placeholder="给同好们留下一个名字，3–24 个字符" required></div>
+<div class="field"><label for="registerEmail">邮箱</label><input id="registerEmail" name="email" type="email" autocomplete="email" placeholder="用于接收注册验证码" required></div>
+<div class="field"><label for="registerCode">邮箱验证码</label><div class="code-row"><input id="registerCode" name="code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" placeholder="6 位验证码" required><button class="button button-secondary" type="button" id="sendCodeBtn" data-url="{{ url_for('send_email_code') }}">发送验证码</button></div><p class="field-note" id="codeStatus" role="status" aria-live="polite">验证码 5 分钟内有效，60 秒后可重新发送。</p></div>
+<div class="field"><label for="registerPassword">设置密码</label><div class="password-field"><input id="registerPassword" name="password" type="password" minlength="6" autocomplete="new-password" placeholder="至少 6 个字符" required><button type="button" data-password-toggle aria-label="显示密码" aria-pressed="false">{{ icon('eye') }}</button></div></div>
+<div class="field"><label for="confirmPassword">确认密码</label><input id="confirmPassword" name="confirm_password" type="password" minlength="6" autocomplete="new-password" placeholder="再次输入密码" required></div>
+<button class="button button-primary auth-submit" type="submit">注册并开启探索 {{ icon('arrow') }}</button>
+</form></section>
+<div class="auth-bottom-note"><span>✦</span> 好故事和好朋友，都值得期待。</div>
+</div><footer class="auth-panel-footer"><span>发现 · 评价 · 分享</span><span>AniVerse Community</span></footer></main>
+</div></body></html>

@@ -1,0 +1,169 @@
+{
+  "verified_at_utc": "2026-10-23T02:27:48.121810+00:00",
+  "fresh_zip_extraction": true,
+  "initial_counts": {
+    "anime": 532,
+    "users": 1,
+    "reviews": 1,
+    "forum_posts": 1,
+    "forum_replies": 1
+  },
+  "repeat_initialization_refused": true,
+  "wsgi_server": "Waitress",
+  "transport": "Real localhost TCP/HTTP",
+  "http_checks_passed": 20,
+  "http_checks": [
+    {
+      "method": "GET",
+      "path": "/",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/library",
+      "status": 302,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "method": "POST",
+      "path": "/login",
+      "status": 302,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/home",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/library",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/library?scope=classics",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/library?scope=classics&page=2",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/season",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/calendar",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/forum",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/search?q=Naruto",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/static/css/feedback.css",
+      "status": 200,
+      "content_type": "text/css; charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/library",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/anime/725",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "method": "POST",
+      "path": "/anime/725",
+      "status": 302,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "method": "POST",
+      "path": "/forum/new",
+      "status": 302,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "method": "POST",
+      "path": "/forum/post/2",
+      "status": 302,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/forum/post/2",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/logout",
+      "status": 302,
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/home",
+      "status": 302,
+      "content_type": "text/html; charset=utf-8"
+    }
+  ],
+  "locked_dependencies_match": {
+    "blinker": "1.9.0",
+    "certifi": "2026.10.19",
+    "charset-normalizer": "3.5.2",
+    "click": "8.5.0",
+    "Flask": "3.1.2",
+    "idna": "3.20",
+    "itsdangerous": "2.2.0",
+    "Jinja2": "3.1.6",
+    "MarkupSafe": "3.0.4",
+    "python-dotenv": "1.2.4",
+    "requests": "2.34.2",
+    "urllib3": "2.8.0",
+    "waitress": "3.0.2",
+    "Werkzeug": "3.1.3"
+  },
+  "archive_excludes": [
+    "production .env",
+    "database files",
+    "user uploads",
+    "virtualenv",
+    "bytecode",
+    "SSH credentials"
+  ],
+  "zip_file_order": [
+    "report.md",
+    "report.pdf",
+    "src/...",
+    "README.md",
+    "THIRD_PARTY_NOTICES.md",
+    "docs/..."
+  ]
+}
