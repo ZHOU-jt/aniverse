@@ -8,7 +8,7 @@
 
 首批 12 部作品，按精确 MyAnimeList ID 匹配，避免不同季度、前后半部或重制版串用链接。其他作品均可使用四个平台搜索入口。
 
-![桌面端官方入口与搜索备用](screenshots/watch-official-desktop.png)
+![桌面端官方入口与搜索备用](screenshots/watch-official-desktop.jpg)
 
 浏览器检查使用独立演示数据，覆盖有官方入口、仅搜索入口、非 B 站官方入口优先三种情况；390 px 和 320 px 窄屏均无横向溢出，评分与评价表单仍正常显示。
 
