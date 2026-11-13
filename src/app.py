@@ -9,6 +9,7 @@ from email.message import EmailMessage
 from functools import wraps
 
 from mailer import send_code_email
+from watch_channels import build_watch_channels
 from dotenv import load_dotenv
 from flask import (
     Flask,
@@ -1008,6 +1009,7 @@ def anime_detail(anime_id):
         anime=anime,
         reviews=reviews,
         stats=stats,
+        watch_channels=build_watch_channels(anime),
     )
 
 

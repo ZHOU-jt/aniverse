@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-13",
+  "mapping_source": "https://github.com/bangumi-data/bangumi-data",
+  "mapping_license": "CC BY 4.0",
+  "review_method": "Exact MAL ID matching, then review of title, season/year and programme type on official platform pages. Store canonical page URLs only, never video streams.",
+  "entries": {
+    "38000": [{"platform": "bilibili", "url": "https://www.bilibili.com/bangumi/play/ss26801", "verified_title": "鬼灭之刃", "verified_on": "2026-11-13", "evidence_url": "https://www.bilibili.com/bangumi/media/md22718131/"}],
+    "40748": [{"platform": "bilibili", "url": "https://www.bilibili.com/bangumi/play/ss34430", "verified_title": "咒术回战", "verified_on": "2026-11-13", "evidence_url": "https://www.bilibili.com/bangumi/media/md28229899/"}],
+    "11757": [{"platform": "bilibili", "url": "https://www.bilibili.com/bangumi/media/md24755609/", "verified_title": "刀剑神域", "verified_on": "2026-11-13", "evidence_url": "https://www.bilibili.com/bangumi/media/md24755609/"}],
+    "23273": [{"platform": "bilibili", "url": "https://www.bilibili.com/bangumi/play/ep80016", "verified_title": "四月是你的谎言", "verified_on": "2026-11-13", "evidence_url": "https://www.bilibili.com/bangumi/media/md1699/"}],
+    "32182": [{"platform": "bilibili", "url": "https://www.bilibili.com/bangumi/play/ss5058", "verified_title": "路人超能100(灵能百分百)", "verified_on": "2026-11-13", "evidence_url": "https://www.bilibili.com/bangumi/play/ss5058"}],
+    "11061": [{"platform": "iqiyi", "url": "https://www.iqiyi.com/v_19rrlx96w0.html", "verified_title": "猎人×猎人", "verified_on": "2026-11-13", "evidence_url": "https://www.iqiyi.com/a_19rrh9my1p.html"}],
+    "39587": [{"platform": "bilibili", "url": "https://www.bilibili.com/bangumi/play/ss33802", "verified_title": "Re：从零开始的异世界生活 第二季 前半", "verified_on": "2026-11-13", "evidence_url": "https://www.bilibili.com/bangumi/media/md28229233"}],
+    "42203": [{"platform": "bilibili", "url": "https://www.bilibili.com/bangumi/play/ss36429", "verified_title": "Re：从零开始的异世界生活 第二季 后半", "verified_on": "2026-11-13", "evidence_url": "https://www.bilibili.com/bangumi/media/md28232382/"}],
+    "50265": [{"platform": "bilibili", "url": "https://www.bilibili.com/bangumi/play/ss41410", "verified_title": "间谍过家家", "verified_on": "2026-11-13", "evidence_url": "https://www.bilibili.com/bangumi/media/md28237119/"}],
+    "33352": [{"platform": "bilibili", "url": "https://www.bilibili.com/bangumi/play/ss21542", "verified_title": "紫罗兰永恒花园", "verified_on": "2026-11-13", "evidence_url": "https://www.bilibili.com/bangumi/media/md8892/"}],
+    "38691": [{"platform": "bilibili", "url": "https://www.bilibili.com/bangumi/media/md28221387/", "verified_title": "Ｄｒ．ＳＴＯＮＥ 石纪元", "verified_on": "2026-11-13", "evidence_url": "https://www.bilibili.com/bangumi/media/md28221387/"}],
+    "42897": [{"platform": "bilibili", "url": "https://www.bilibili.com/bangumi/media/md28231840/", "verified_title": "堀与宫村", "verified_on": "2026-11-13", "evidence_url": "https://www.bilibili.com/bangumi/media/md28231840/"}]
+  }
+}

@@ -1,12 +1,12 @@
 {
-  "checked_at_utc": "2026-10-22T11:39:13.487635+00:00",
+  "checked_at_utc": "2026-11-13T02:32:03.673901+00:00",
   "python": "3.12.14",
   "platform": "Windows",
-  "tests_run": 36,
-  "passed": 36,
+  "tests_run": 52,
+  "passed": 52,
   "failures": 0,
   "errors": 0,
-  "duration_seconds": 14.97,
+  "duration_seconds": 8.33,
   "isolation": "Temporary SQLite database; SMTP mocked; no live user data or real email used",
   "passed_checks": [
     "ApplicationTests.test_01_protected_routes_redirect",
@@ -44,6 +44,22 @@
     "MailerTests.test_33_permanent_auth_failure_not_retried",
     "MailerTests.test_34_uncertain_delivery_not_retried",
     "MailerTests.test_35_quit_failure_does_not_undo_acceptance",
-    "MailerTests.test_36_plaintext_configuration_rejected"
+    "MailerTests.test_36_plaintext_configuration_rejected",
+    "WatchChannelTests.test_01_unknown_title_has_four_searches",
+    "WatchChannelTests.test_02_reviewed_player_precedes_search",
+    "WatchChannelTests.test_03_exact_mal_match_does_not_leak_seasons",
+    "WatchChannelTests.test_04_search_preserves_chinese_and_special_characters",
+    "WatchChannelTests.test_05_english_and_japanese_title_fallbacks",
+    "WatchChannelTests.test_06_missing_or_invalid_id_remains_search",
+    "WatchChannelTests.test_07_stale_future_disabled_and_missing_dates_fall_back",
+    "WatchChannelTests.test_08_unsafe_hosts_schemes_ports_and_paths_rejected",
+    "WatchChannelTests.test_09_unknown_provider_and_missing_evidence_rejected",
+    "WatchChannelTests.test_10_detail_is_distinguished_and_player_is_preferred",
+    "WatchChannelTests.test_11_bad_catalogue_or_entry_list_fails_closed",
+    "WatchChannelTests.test_12_missing_and_corrupt_catalogue_use_search",
+    "WatchChannelTests.test_13_config_records_are_reviewed_and_match_seed",
+    "WatchChannelTests.test_14_rendered_official_and_search_links_are_safe",
+    "WatchChannelTests.test_15_unknown_work_page_has_explicit_search_labels",
+    "WatchChannelTests.test_16_title_is_escaped_in_html"
   ]
 }

@@ -1,0 +1,19 @@
+{% from 'ui.html' import icon %}
+<section class="watch-channels" aria-labelledby="watch-channels-title">
+  <div class="watch-heading"><h2 id="watch-channels-title">正版观看渠道</h2><span>前往平台观看 {{ icon('arrow') }}</span></div>
+  {% set official = watch_channels|selectattr('direct_url')|list %}
+  <p class="watch-intro">{% if official %}优先为你找到 {{ official|length }} 个官方入口。会员与地区限制以平台为准。{% else %}暂未核验到官方播放页，可以先到以下平台搜索。{% endif %}</p>
+  <div class="watch-grid">
+    {% for channel in watch_channels %}
+    <article class="watch-card watch-{{ channel.id }} {% if channel.direct_url %}watch-card-official{% endif %}">
+      <a class="watch-main-link" href="{{ channel.direct_url or channel.search_url }}" target="_blank" rel="noopener noreferrer external" {% if channel.direct_url %}aria-label="前往{{ channel.name }}的{{ channel.label }}：{{ channel.title }}（在新窗口打开）"{% else %}aria-label="去{{ channel.name }}搜索 {{ channel.title }}（在新窗口打开）"{% endif %}>
+        <span class="watch-platform-mark" aria-hidden="true">{{ channel.mark }}</span>
+        <span class="watch-link-copy"><strong>{{ channel.name }}</strong><span class="watch-link-kind">{{ channel.label }}</span></span>
+        <span class="watch-link-action">{% if channel.kind == 'play' %}前往观看{% elif channel.kind == 'detail' %}查看番剧{% else %}搜索番剧{% endif %} {{ icon('arrow') }}</span>
+      </a>
+      {% if channel.direct_url %}<div class="watch-card-footer"><span title="官方页面最近核验日期">核验于 {{ channel.verified_on }}</span><a href="{{ channel.search_url }}" target="_blank" rel="noopener noreferrer external" aria-label="去{{ channel.name }}搜索 {{ channel.title }}（在新窗口打开）">在平台搜索 {{ icon('search') }}</a></div>{% endif %}
+    </article>
+    {% endfor %}
+  </div>
+  <p class="watch-note">所有入口均在新窗口打开；搜索结果请认准平台正版标识。</p>
+</section>
